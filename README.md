@@ -21,3 +21,7 @@ As a player I want
 * to avoid flying monkeys with bat wings
 * to grab donouts to give me points
 * to grab coffee to restore health
+
+4/24:  Added npm, grunt and jasmine support
+       Added 1 currently failing test
+       To run tests from command line root dir:  grunt test
