@@ -5,7 +5,7 @@ A Javascript game
 Context: Chrome or Firefox browser.
 
 As a player I want
-* to see a canvas that fills the browser screen
+* to see a canvas that will be the background of the game
 * to see a character entity on the browser screen
 * to move the entity with the arrow keys
 * the character entity to experience gravity
@@ -32,3 +32,6 @@ As a player I want
 * Added .gitignore so node_modules will not be accidentally committed in future
 * Added spec folder to hold test files, removed old game.test.js
 * Removed boilerplate failing test and added first game specific test
+* Changed background color to better night sky color
+* Changed dimensions of background to be better for up down scroller / falling
+* TODO: Add random star generator that gens a star field in the background ( use entities ? or use premad background? or some combo of both?)
