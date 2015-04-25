@@ -30,3 +30,5 @@ As a player I want
 4/25
 * Removed node_modules dir, use npm install to install from package.json in future
 * Added .gitignore so node_modules will not be accidentally committed in future
+* Added spec folder to hold test files, removed old game.test.js
+* Removed boilerplate failing test and added first game specific test
