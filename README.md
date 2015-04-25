@@ -26,3 +26,7 @@ As a player I want
 * Added npm, grunt and jasmine support
 * Added 1 currently failing test
 * To run tests from command line root dir:  grunt test
+
+4/25
+* Removed node_modules dir, use npm install to install from package.json in future
+* Added .gitignore so node_modules will not be accidentally committed in future
