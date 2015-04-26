@@ -24,5 +24,22 @@ Game = {
     // Start crafty and set a background color so that we can see it's working
     Crafty.init(Game.width(), Game.height());
     Crafty.background(Game.background);
+
+    // Add the Player
+    Crafty.e('Player').at(11, 16);
+
+    // Draw the grid
+    for (var x = 0; x < Game.map_grid.width; x++) {
+      for (var y = 0; y < Game.map_grid.height; y++) {
+
+        // Draw a star at random grid squares
+        if (Math.random() < 0.06) {
+          // Place a star entity at the current tile
+          Crafty.e('Star').at(x, y);
+        }
+
+      }
+    }
+
   }
 }

@@ -8,5 +8,9 @@ describe('game',function() {
     expect(Game.width()).toEqual(352);
     expect(Game.height()).toEqual(544); 
   });
+
+  it ('has at least one star entity', function() {
+    expect(Crafty.star).not.toBeNull();
+  });
   
 });
