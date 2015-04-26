@@ -8,5 +8,5 @@ describe('game',function() {
     expect(Game.width()).toEqual(352);
     expect(Game.height()).toEqual(544); 
   });
-
+  
 });

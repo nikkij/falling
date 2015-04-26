@@ -34,4 +34,7 @@ As a player I want
 * Removed boilerplate failing test and added first game specific test
 * Changed background color to better night sky color
 * Changed dimensions of background to be better for up down scroller / falling
+
+4/26
+* Added component and componentSpec
 * TODO: Add random star generator that gens a star field in the background ( use entities ? or use premad background? or some combo of both?)
