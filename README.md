@@ -42,3 +42,6 @@ As a player I want
 * Added Star entity and random generated star field to Game
 * Added controllable Player entity to Game with fourway movement
 * TODO: can't figure out how to init Crafty to use in unit tests, need to figure out so can add tests for compoenents next - coding without testing - bad juju nikki
+
+4/27
+* Added viewport that scrolls along x-axis
