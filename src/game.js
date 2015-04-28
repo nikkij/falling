@@ -4,7 +4,7 @@ Game = {
   background: 'rgb(22, 23, 87)',
   map_grid: {
     width:  22,
-    height: 34,
+    height: 100,
     tile: {
       width:  16,
       height: 16
@@ -23,10 +23,14 @@ Game = {
   start: function() {
     // Start crafty and set a background color so that we can see it's working
     Crafty.init(Game.width(), Game.height());
+    Crafty.viewport.init(Game.width(),500);
     Crafty.background(Game.background);
 
     // Add the Player
-    Crafty.e('Player').at(11, 16);
+    var player = Crafty.e('Player').at(11, 16);
+
+    //Crafty.viewport.clampToEntities = false
+    Crafty.viewport.pan(0, 500, 6000)
 
     // Draw the grid
     for (var x = 0; x < Game.map_grid.width; x++) {
