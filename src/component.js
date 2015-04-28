@@ -30,9 +30,45 @@ Crafty.c('Actor', {
 // Player entity
 Crafty.c('Player', {
   init: function() {
-    this.requires('Actor, Fourway, Color')
+    this.requires('Actor, Fourway, Color, Collision')
       .fourway(4)
-      .color('orange');
+      .color('orange')
+      .stopOnSolids();
+  },
+
+  // Registers a stop-movement function to be called when
+  //  this entity hits an entity with the "Solid" component
+  stopOnSolids: function() {
+    this.onHit('Solid', this.stopMovement);
+ 
+    return this;
+  },
+  // Stop player from moving out of vertical edges
+  //stopOnEdges: function() {
+    //this.onHit('Solid', this.stopMovement);
+    //if ( this._x == 0 ) {
+    //	console.log("Player at: " + this.x);
+    	//this.stopMovement();
+    //}
+   // return this;
+  //},
+
+  // Stops the movement
+  stopMovement: function() {
+    this._speed = 0;
+    if (this._movement) {
+      this.x -= this._movement.x;
+      this.y -= this._movement.y;
+    }
+  }
+
+});
+
+// Edge 
+Crafty.c('Edge', {
+  init: function() {
+    this.requires('2D, Canvas, Grid, Solid')
+      .visible = false;
   },
 });
 
