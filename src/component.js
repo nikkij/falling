@@ -76,6 +76,14 @@ Crafty.c('Edge', {
 Crafty.c('Star', {
   init: function() {
     this.requires('Actor, Color')
+      .color('grey');
+  },
+});
+
+// Cloud entity
+Crafty.c('Cloud', {
+  init: function() {
+    this.requires('Actor, Color, Solid')
       .color('white');
   },
 });

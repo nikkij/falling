@@ -49,5 +49,10 @@ Game = {
       }
     }
 
+    // Manually add clouds
+    Crafty.e('Cloud').at(11, 30);
+    Crafty.e('Cloud').at(12, 30);
+    Crafty.e('Cloud').at(13, 30);
+
   }
 }
