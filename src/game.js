@@ -29,6 +29,17 @@ Game = {
     // Add the Player
     var player = Crafty.e('Player').at(11, 16);
 
+    // Add Stats Text
+    //Crafty.e('HUD').attr({ x: 500, y: 500 }).text("Look at me!!").textColor('red');
+
+    Crafty.e('HUD').attr({x: 25, y: 450, w: 100, h: 50})
+      .text("score")
+      .textColor('white')
+      .textFont({
+        size: '20px',
+        weight: 'bold'
+      });
+
     //Crafty.viewport.clampToEntities = false
     Crafty.viewport.pan(0, 500, 6000)
 
@@ -44,6 +55,7 @@ Game = {
         else if (Math.random() < 0.06) {         
           // Place a star entity at the current tile
           Crafty.e('Star').at(x, y);
+
         }
 
       }
