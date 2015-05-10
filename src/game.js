@@ -10,6 +10,7 @@ Game = {
       height: 16
     }
   },
+  points: 0,
 
   width: function() {
     return this.map_grid.width * this.map_grid.tile.width;
@@ -31,13 +32,13 @@ Game = {
 
     // Add HUD for displaying meta data
     Crafty.e('HUD').attr({x: 25, y: 450, w: 100, h: 50})
-      .text("score")
+      .text(Game.points)
       .textColor('white')
       .textFont({
         size: '20px',
         weight: 'bold'
       })
-      .bind("UpdatePoints", function(){this.text("Points!")});
+      .bind("UpdatePoints", function(pointsDelta){var newPoints = Game.points = parseInt(pointsDelta) + parseInt(Game.points); this.text(newPoints)});
 
     //Crafty.viewport.clampToEntities = false
     Crafty.viewport.pan(0, 500, 6000)
@@ -67,5 +68,6 @@ Game = {
 
     // Maually add coffees
     Crafty.e('Coffee').at(5,40);
+    Crafty.e('Coffee').at(5,44);
   }
 }

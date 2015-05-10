@@ -94,7 +94,7 @@ Crafty.c('Player', {
     this.bind("HitOn", function(hitData) {
         //console.log("Collision with Point entity occurred for the first time.");
         //Crafty.trigger("UpdatePoints", {health: this.health, damage: damageValue});
-        Crafty.trigger("UpdatePoints",{});
+        Crafty.trigger("UpdatePoints", 1);
     });
   }
 
