@@ -29,16 +29,15 @@ Game = {
     // Add the Player
     var player = Crafty.e('Player').at(11, 16);
 
-    // Add Stats Text
-    //Crafty.e('HUD').attr({ x: 500, y: 500 }).text("Look at me!!").textColor('red');
-
+    // Add HUD for displaying meta data
     Crafty.e('HUD').attr({x: 25, y: 450, w: 100, h: 50})
       .text("score")
       .textColor('white')
       .textFont({
         size: '20px',
         weight: 'bold'
-      });
+      })
+      .bind("UpdatePoints", function(){this.text("Points!")});
 
     //Crafty.viewport.clampToEntities = false
     Crafty.viewport.pan(0, 500, 6000)
@@ -66,5 +65,7 @@ Game = {
     Crafty.e('Cloud').at(12, 30);
     Crafty.e('Cloud').at(13, 30);
 
+    // Maually add coffees
+    Crafty.e('Coffee').at(5,40);
   }
 }

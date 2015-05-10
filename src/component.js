@@ -66,7 +66,8 @@ Crafty.c('Player', {
       .color('orange')
       .gravity('Cloud')
       .gravityConst(.05)
-      .stopOnSolids();
+      .stopOnSolids()
+      .collectPoints();
   },
 
   // Registers a stop-movement function to be called when
@@ -76,15 +77,7 @@ Crafty.c('Player', {
  
     return this;
   },
-  // Stop player from moving out of vertical edges
-  //stopOnEdges: function() {
-    //this.onHit('Solid', this.stopMovement);
-    //if ( this._x == 0 ) {
-    //	console.log("Player at: " + this.x);
-    	//this.stopMovement();
-    //}
-   // return this;
-  //},
+
 
   // Stops the movement
   stopMovement: function() {
@@ -93,6 +86,16 @@ Crafty.c('Player', {
       this.x -= this._movement.x;
       this.y -= this._movement.y;
     }
+  },
+
+  // Collects points on collision with Point components
+  collectPoints: function() {
+    this.checkHits('Point');
+    this.bind("HitOn", function(hitData) {
+        //console.log("Collision with Point entity occurred for the first time.");
+        //Crafty.trigger("UpdatePoints", {health: this.health, damage: damageValue});
+        Crafty.trigger("UpdatePoints",{});
+    });
   }
 
 });
@@ -121,6 +124,13 @@ Crafty.c('Cloud', {
   },
 });
 
+// Coffee entity
+Crafty.c('Coffee', {
+  init: function() {
+    this.requires('Actor, Color, Point')
+      .color('yellow');
+  },
+});
 
 // HUD
 Crafty.c('HUD', {
