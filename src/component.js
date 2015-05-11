@@ -124,8 +124,8 @@ Crafty.c('Cloud', {
   },
 });
 
-// Coffee entity
-Crafty.c('Coffee', {
+// Donut entity
+Crafty.c('Donut', {
   init: function() {
     this.requires('Actor, Color, Point')
       .color('yellow');

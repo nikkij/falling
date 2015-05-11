@@ -67,7 +67,7 @@ Game = {
     Crafty.e('Cloud').at(13, 30);
 
     // Maually add coffees
-    Crafty.e('Coffee').at(5,40);
-    Crafty.e('Coffee').at(5,44);
+    Crafty.e('Donut').at(5,40);
+    Crafty.e('Donut').at(5,44);
   }
 }
