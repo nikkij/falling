@@ -67,7 +67,8 @@ Crafty.c('Player', {
       .gravity('Cloud')
       .gravityConst(.05)
       .stopOnSolids()
-      .collectPoints();
+      .collectPoints()
+      .collectHealth()
   },
 
   // Registers a stop-movement function to be called when
@@ -88,14 +89,24 @@ Crafty.c('Player', {
     }
   },
 
-  // Collects points on collision with Point components
   collectPoints: function() {
     this.checkHits('Point');
     this.bind("HitOn", function(hitData) {
-        //console.log("Collision with Point entity occurred for the first time.");
-        //Crafty.trigger("UpdatePoints", {health: this.health, damage: damageValue});
+      if (hitData[0].obj.has('Point')) {
         Crafty.trigger("UpdatePoints", 1);
-    });
+      }
+    }); 
+    return this; 
+  },
+
+  collectHealth: function() {
+    this.checkHits('Health');
+    this.bind("HitOn", function(hitData) {
+      if (hitData[0].obj.has('Health')) {
+        Crafty.trigger("UpdateHealth", 1);
+      }
+    }); 
+    return this; 
   }
 
 });
@@ -128,6 +139,14 @@ Crafty.c('Cloud', {
 Crafty.c('Donut', {
   init: function() {
     this.requires('Actor, Color, Point')
+      .color('pink');
+  },
+});
+
+//Coffee entity
+Crafty.c('Coffee', {
+  init: function() {
+    this.requires('Actor, Color, Health')
       .color('yellow');
   },
 });

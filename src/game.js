@@ -11,6 +11,7 @@ Game = {
     }
   },
   points: 0,
+  health: 0,
 
   width: function() {
     return this.map_grid.width * this.map_grid.tile.width;
@@ -32,13 +33,14 @@ Game = {
 
     // Add HUD for displaying meta data
     Crafty.e('HUD').attr({x: 25, y: 450, w: 100, h: 50})
-      .text(Game.points)
+      .text("P:"+Game.points+"H:"+Game.health)
       .textColor('white')
       .textFont({
         size: '20px',
         weight: 'bold'
       })
-      .bind("UpdatePoints", function(pointsDelta){var newPoints = Game.points = parseInt(pointsDelta) + parseInt(Game.points); this.text(newPoints)});
+      .bind("UpdatePoints", function(pointsDelta){var newPoints = Game.points = parseInt(pointsDelta) + parseInt(Game.points); this.text("P:"+Game.points+"H:"+Game.health)})
+      .bind("UpdateHealth", function(healthDelta){ Game.health = parseInt(healthDelta) + parseInt(Game.health); this.text("P:"+Game.points+"H:"+Game.health)}); 
 
     //Crafty.viewport.clampToEntities = false
     Crafty.viewport.pan(0, 500, 6000)
@@ -66,8 +68,12 @@ Game = {
     Crafty.e('Cloud').at(12, 30);
     Crafty.e('Cloud').at(13, 30);
 
-    // Maually add coffees
+    // Maually add donuts
     Crafty.e('Donut').at(5,40);
     Crafty.e('Donut').at(5,44);
+
+    // Manually add coffees
+    Crafty.e('Coffee').at(5,46);
+    Crafty.e('Coffee').at(5,50);   
   }
 }
