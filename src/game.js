@@ -63,6 +63,9 @@ Game = {
       }
     }
 
+    // Manually add enemies
+    Crafty.e('Enemy').at(5,35); 
+
     // Manually add clouds
     Crafty.e('Cloud').at(11, 30);
     Crafty.e('Cloud').at(12, 30);
@@ -74,6 +77,9 @@ Game = {
 
     // Manually add coffees
     Crafty.e('Coffee').at(5,46);
-    Crafty.e('Coffee').at(5,50);   
+    Crafty.e('Coffee').at(5,50);
+
+
+  
   }
 }

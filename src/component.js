@@ -64,7 +64,7 @@ Crafty.c('Player', {
     this.requires('Actor, Fourway, Color, Collision, Gravity')
       .fourway(4)
       .color('orange')
-      .gravity('Cloud')
+      .gravity('Solid')
       .gravityConst(.05)
       .stopOnSolids()
       .collectPoints()
@@ -111,6 +111,11 @@ Crafty.c('Player', {
 
 });
 
+Crafty.c('Solid', {
+  init: function() {
+  },
+});
+
 // Edge 
 Crafty.c('Edge', {
   init: function() {
@@ -148,6 +153,14 @@ Crafty.c('Coffee', {
   init: function() {
     this.requires('Actor, Color, Health')
       .color('yellow');
+  },
+});
+
+//Enemy entity
+Crafty.c('Enemy', {
+  init: function() {
+    this.requires('2D, Canvas, Grid, Color, Solid')
+      .color('green');
   },
 });
 
