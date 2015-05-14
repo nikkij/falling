@@ -69,13 +69,15 @@ Crafty.c('Player', {
       .stopOnSolids()
       .collectPoints()
       .collectHealth()
+      .removeHealth()
+      //write remove health function on hit enemy
   },
 
   // Registers a stop-movement function to be called when
   //  this entity hits an entity with the "Solid" component
   stopOnSolids: function() {
     this.onHit('Solid', this.stopMovement);
- 
+
     return this;
   },
 
@@ -103,9 +105,20 @@ Crafty.c('Player', {
     this.checkHits('Health');
     this.bind("HitOn", function(hitData) {
       if (hitData[0].obj.has('Health')) {
-        Crafty.trigger("UpdateHealth", 1);
+        Crafty.trigger("AddHealth", 1);
       }
     }); 
+    return this; 
+  },
+
+  removeHealth: function() {
+    this.checkHits('Poison');
+    this.bind("HitOn", function(hitData) {
+      if (hitData[0].obj.has('Poison')) {
+        Crafty.trigger("SubtractHealth", 1);
+      }
+    }); 
+
     return this; 
   }
 
@@ -113,6 +126,12 @@ Crafty.c('Player', {
 
 Crafty.c('Solid', {
   init: function() {
+  },
+});
+
+Crafty.c('Poison', {
+  init: function() {
+    this.requires('2D, Canvas, Grid')
   },
 });
 

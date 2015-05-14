@@ -40,7 +40,11 @@ Game = {
         weight: 'bold'
       })
       .bind("UpdatePoints", function(pointsDelta){var newPoints = Game.points = parseInt(pointsDelta) + parseInt(Game.points); this.text("P:"+Game.points+"H:"+Game.health)})
-      .bind("UpdateHealth", function(healthDelta){ Game.health = parseInt(healthDelta) + parseInt(Game.health); this.text("P:"+Game.points+"H:"+Game.health)}); 
+      .bind("AddHealth", function(healthDelta){ Game.health = parseInt(healthDelta) + parseInt(Game.health); this.text("P:"+Game.points+"H:"+Game.health)})
+      .bind("SubtractHealth", function(healthDelta){ 
+        //Game.health = parseInt(healthDelta) - parseInt(Game.health); this.text("P:"+Game.points+"H:"+Game.health)
+        this.text("hello")
+      });  
 
     //Crafty.viewport.clampToEntities = false
     Crafty.viewport.pan(0, 500, 6000)
@@ -64,7 +68,8 @@ Game = {
     }
 
     // Manually add enemies
-    Crafty.e('Enemy').at(5,35); 
+    Crafty.e('Poison').at(5,54);
+    Crafty.e('Enemy').at(5,55); 
 
     // Manually add clouds
     Crafty.e('Cloud').at(11, 30);
