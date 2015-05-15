@@ -42,8 +42,8 @@ Game = {
       .bind("UpdatePoints", function(pointsDelta){var newPoints = Game.points = parseInt(pointsDelta) + parseInt(Game.points); this.text("P:"+Game.points+"H:"+Game.health)})
       .bind("AddHealth", function(healthDelta){ Game.health = parseInt(healthDelta) + parseInt(Game.health); this.text("P:"+Game.points+"H:"+Game.health)})
       .bind("SubtractHealth", function(healthDelta){ 
-        //Game.health = parseInt(healthDelta) - parseInt(Game.health); this.text("P:"+Game.points+"H:"+Game.health)
-        this.text("hello")
+        Game.health = parseInt(Game.health) - parseInt(healthDelta); this.text("P:"+Game.points+"H:"+Game.health)
+        //this.text("hello")
       });  
 
     //Crafty.viewport.clampToEntities = false
