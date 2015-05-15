@@ -95,7 +95,8 @@ Crafty.c('Player', {
     this.checkHits('Point');
     this.bind("HitOn", function(hitData) {
       if (hitData[0].obj.has('Point')) {
-        Crafty.trigger("UpdatePoints", 1);
+        Crafty.trigger("PointHit", 1);
+        hitData[0].obj.destroy();
       }
     }); 
     return this; 
@@ -105,7 +106,8 @@ Crafty.c('Player', {
     this.checkHits('Health');
     this.bind("HitOn", function(hitData) {
       if (hitData[0].obj.has('Health')) {
-        Crafty.trigger("AddHealth", 1);
+        Crafty.trigger("HealthHit", 1);
+        hitData[0].obj.destroy();
       }
     }); 
     return this; 
