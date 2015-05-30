@@ -56,11 +56,12 @@ Game = {
     // Draw the grid
     for (var x = 0; x < Game.map_grid.width; x++) {
       for (var y = 0; y < Game.map_grid.height; y++) {
-        var at_edge = x == 0 || x == Game.map_grid.width-1;
+        var at_x_edge = x == 0 || x == Game.map_grid.width-1;
 
-        if (at_edge) {
+        if (at_x_edge) {
           Crafty.e('Edge').at(x,y);  
         }
+
         // Draw a star at random grid squares
         else if (Math.random() < 0.06) {         
           // Place a star entity at the current tile

@@ -70,6 +70,7 @@ Crafty.c('Player', {
       .collectPoints()
       .collectHealth()
       .removeHealth()
+      .checkForTopOfViewport()
       //write remove health function on hit enemy
   },
 
@@ -122,6 +123,17 @@ Crafty.c('Player', {
     }); 
 
     return this; 
+  },
+  
+  // test if player has gone out of viewport in the y axis and push them back into the frame
+  // effectively making it so a player can never go back up
+  checkForTopOfViewport: function() {
+    this.bind("EnterFrame", function() {
+      if (this.y < -Crafty.viewport.y) {
+        this.stopMovement;
+        this.y = this.y + 2;
+      }
+    })
   }
 
 });
