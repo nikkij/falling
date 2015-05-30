@@ -19,37 +19,6 @@ Crafty.c('Grid', {
   }
 });
 
-// Utility component that can be added to entities to make them "stick" in the viewport
-Crafty.c("ViewportRelative", {
-  _viewportPreviousX: 0,
-  _viewportPreviousY: 0,
-  _viewportStartX: 0,
-  _viewportStartY: 0,
-  init: function() {    
-    this.bind("EnterFrame", this._frame); 
-  },
-  _frame: function() {
-    if(this._viewportPreviousX != Crafty.viewport._x) {
-      this._viewportStartX = Crafty.viewport._x;
-        
-      this.y += this._viewportPreviousX
-      this.y -= Crafty.viewport._x;
-        
-      this._viewportPreviousX = this._viewportStartX;
-    }
-        
-    if(this._viewportPreviousY != Crafty.viewport._y) {
-      this._viewportStartY = Crafty.viewport._y;
-        
-      this.y += this._viewportPreviousY
-      this.y -= Crafty.viewport._y;
-        
-      this._viewportPreviousY = this._viewportStartY;
-    }
-  }
-});
-
-
 // An "Actor" is an entity that is drawn in 2D on canvas
 //  via our logical coordinate grid
 Crafty.c('Actor', {
