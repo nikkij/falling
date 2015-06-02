@@ -70,8 +70,8 @@ Crafty.c('Player', {
       .collectPoints()
       .collectHealth()
       .removeHealth()
+      .gatherUmbrella()
       .checkForTopOfViewport()
-      //write remove health function on hit enemy
   },
 
   // Registers a stop-movement function to be called when
@@ -134,6 +134,20 @@ Crafty.c('Player', {
         this.y = this.y + 2;
       }
     })
+  },
+
+  // try adding this collision to the umbrella entity instead of storing everything in the player
+  gatherUmbrella: function() {
+    this.checkHits('Slowdown');
+    this.bind("HitOn", function(hitData) {
+      if (hitData[0].obj.has('Slowdown')) {
+        //Crafty.trigger("SlowPlayer");
+        this.attach(hitData[0].obj);
+        //this.gravityConst(.01);
+        //hitData[0].obj.destroy();
+      }
+    }); 
+    return this; 
   }
 
 });
@@ -186,6 +200,14 @@ Crafty.c('Coffee', {
   init: function() {
     this.requires('Actor, Color, Health')
       .color('yellow');
+  },
+});
+
+//Umbrella entity
+Crafty.c('Umbrella', {
+  init: function() {
+    this.requires('Actor, Color, Slowdown')
+      .color('brown');
   },
 });
 

@@ -88,6 +88,11 @@ Game = {
           if (Game.levelPlan[y][x] == "f") {
             Crafty.e('Coffee').at(x,y);
           }
+
+          // Draw umbrella
+          if (Game.levelPlan[y][x] == "u") {
+            Crafty.e('Umbrella').at(x,y);
+          }          
         }
  
       }
