@@ -138,13 +138,22 @@ Crafty.c('Player', {
 
   // try adding this collision to the umbrella entity instead of storing everything in the player
   gatherUmbrella: function() {
+    var self = this;
     this.checkHits('Slowdown');
     this.bind("HitOn", function(hitData) {
+      self.hitData = hitData;
       if (hitData[0].obj.has('Slowdown')) {
         //Crafty.trigger("SlowPlayer");
         this.attach(hitData[0].obj);
-        //this.gravityConst(.01);
-        //hitData[0].obj.destroy();
+        this.gravityConst(.01);
+        hitData[0].obj.delay(function() {
+          //don't need to do anything special here?
+        }, 100, 80, function() {
+          // when time is up
+          //console.log("time is up");
+          self.gravityConst(.05);
+          hitData[0].obj.destroy();
+        });
       }
     }); 
     return this; 
@@ -206,7 +215,7 @@ Crafty.c('Coffee', {
 //Umbrella entity
 Crafty.c('Umbrella', {
   init: function() {
-    this.requires('Actor, Color, Slowdown')
+    this.requires('Actor, Color, Delay, Slowdown')
       .color('brown');
   },
 });
